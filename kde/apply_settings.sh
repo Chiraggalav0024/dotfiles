@@ -2,9 +2,9 @@
 set -e
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-echo "Restoring KDE Plasma settings from $DIR..."
+echo "Applying KDE Plasma 6 configurations from $DIR..."
 
-# Copy config files back into ~/.config
+# Copy config files to ~/.config
 cp "$DIR/kwinrc" ~/.config/
 cp "$DIR/kwinrulesrc" ~/.config/
 cp "$DIR/kglobalshortcutsrc" ~/.config/
@@ -23,10 +23,10 @@ if [ -f "/usr/share/hypr/wall2.png" ]; then
   '
 fi
 
-# Reload shortcuts, compositor, and window manager
-systemctl --user restart plasma-kglobalaccel.service
-qdbus6 org.kde.KWin /KWin reconfigure
+# Reload shortcuts daemon and KWin compositor
+systemctl --user restart plasma-kglobalaccel 2>/dev/null || true
+qdbus6 org.kde.KWin /KWin reconfigure 2>/dev/null || true
 qdbus6 org.kde.KWin /Effects org.kde.kwin.Effects.loadEffect translucency 2>/dev/null || true
 qdbus6 org.kde.KWin /Effects org.kde.kwin.Effects.reconfigureEffect translucency 2>/dev/null || true
 
-echo "Settings successfully applied!"
+echo "KDE configuration applied successfully."
