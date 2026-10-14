@@ -22,6 +22,9 @@ fadedesktopEnabled=true
 slideEnabled=false
 translucencyEnabled=true
 
+[TabBox]
+LayoutName=flipswitch
+
 [Tiling][0b739cf9-ad93-4168-ad7f-5def573c022b][f89a8e68-03e8-444d-a321-3e57c6ff3f67]
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
@@ -66,6 +69,7 @@ ClickRaise=true
 DelayFocusInterval=0
 FocusPolicy=FocusFollowsMouse
 MoveResizeSwitchDesktop=true
+Placement=Smart
 
 [Xwayland]
 Scale=1
